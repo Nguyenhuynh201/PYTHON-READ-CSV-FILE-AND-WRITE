@@ -1,0 +1,12 @@
+Total words count: 4910
+Total Characters count: 31166
+The average word length is: 5.1
+The average sentense length is: 12.2
+A word distribution of all words ending in 'ly'
+highly 12 
+totally 12 
+completely 12 
+rapidly 12 
+relentlessly 12 
+A list of top 10 longest words in descending order:
+['(Applause.)Madam', '(Applause.)Madam', '(Applause.)Madam', '(Applause.)Madam', '(Applause.)Madam', '(Applause.)Madam', '(Applause.)Madam', '(Applause.)Madam', '(Applause.)Madam', '(Applause.)Madam']
