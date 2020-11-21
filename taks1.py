@@ -19,8 +19,8 @@ with open(OUTPUT, WRITE_MODE) as output:
             output.write(f"Total Characters count: {total_char}\n")
         
         def avg_word_length(string):
-            filtered = ''.join(filter(lambda x: x not in '".,;!-', string)) 
-            words = [word for word in filtered.split() if word]
+
+            words = [word for word in string.split() if word]
             avg = sum(map(len, words))/len(words)
             output.write(f"The average word length is: {avg:0.1f}\n")
 
@@ -33,35 +33,34 @@ with open(OUTPUT, WRITE_MODE) as output:
             for word in string.split():
                 if word.endswith("ly") == True:
                     if word in di:
-                        di[word]+=1
+                        di[word] += 1
                     else:
-                        di[word]=1
+                        di[word] = 1
                     string = string.replace(word,'')
 
-        def longwords(l, x):
-            c = count()
-            return sorted(l, key=lambda i: (len(i), next(c)),
-                  reverse=True)[:x]
+        def longest_word(lst, K): 
+            cnt = count() 
+            return sorted(lst, key = lambda w : (len(w), next(cnt)),  
+                                        reverse = True)[:K] 
 
     except:
         output.write(f'Unexpected exception, blame its developer.\n')
-
     with open(FILENAME, READ_MODE) as input:
         data = input.read()
-        result1 = words_count(data)
-        result2 = char_count(data)
-        result3 = avg_word_length(data)
-        result4 = avg_sent_length(data)
-        result5 = count_words_endinly(data)
+        no_punctuation =  data.translate({ord(c): "" for c in "!@#$%^&*()_+|.,"})
+        result1 = words_count(no_punctuation)
+        result2 = char_count(no_punctuation)
+        result3 = avg_word_length(no_punctuation)
+        result4 = avg_sent_length(no_punctuation)
+        result5 = count_words_endinly(no_punctuation)
         output.write("A word distribution of all words ending in 'ly'\n")
         for i in di:
             output.write(f'{i} {di[i]} \n')
         output.write("A list of top 10 longest words in descending order:\n")
         K = 10
-        string_to_list = list(data.split())
-        output.write(f'{longwords(string_to_list, K)}')
-        
-
+        string_to_list = list(no_punctuation.split())
+        #print(longest_words(string_to_list, K))
+        output.write(f'{longest_word(string_to_list, K)}')
 
             
 
